@@ -7,12 +7,12 @@ public class Ese103
 	public static void main(String[] args)
 	{
 		Circle c[] = new Circle[4];
-		c[0] = new Circle(2, 3, 5);
+		c[0] = new Circle(2, 4, 6);
 		c[1] = new Circle(3, 2, 4);
 		c[2] = new Circle(4, 4, 6);
 		c[3] = new Circle(5, 5, 1);
 		Triangle t[] = new Triangle[4];
-		t[0] = new Triangle(2, 3, 5);
+		t[0] = new Triangle(2, 4, 6);
 		t[1] = new Triangle(3, 2, 4);
 		t[2] = new Triangle(4, 4, 6);
 		t[3] = new Triangle(5, 5, 1);
@@ -42,31 +42,39 @@ public class Ese103
 		checkContainment(t[3], t[1]);
 		checkContainment(t[3], t[2]);
 		System.out.println();
+		checkContainment(c[0], t[0]);
 		checkContainment(c[0], t[1]);
 		checkContainment(c[0], t[2]);
 		checkContainment(c[0], t[3]);
 		checkContainment(c[1], t[0]);
+		checkContainment(c[1], t[1]);
 		checkContainment(c[1], t[2]);
 		checkContainment(c[1], t[3]);
 		checkContainment(c[2], t[0]);
 		checkContainment(c[2], t[1]);
+		checkContainment(c[2], t[2]);
 		checkContainment(c[2], t[3]);
 		checkContainment(c[3], t[0]);
 		checkContainment(c[3], t[1]);
 		checkContainment(c[3], t[2]);
+		checkContainment(c[3], t[3]);
 		System.out.println();
+		checkContainment(t[0], c[0]);
 		checkContainment(t[0], c[1]);
 		checkContainment(t[0], c[2]);
 		checkContainment(t[0], c[3]);
 		checkContainment(t[1], c[0]);
+		checkContainment(t[1], c[1]);
 		checkContainment(t[1], c[2]);
 		checkContainment(t[1], c[3]);
 		checkContainment(t[2], c[0]);
 		checkContainment(t[2], c[1]);
+		checkContainment(t[2], c[2]);
 		checkContainment(t[2], c[3]);
 		checkContainment(t[3], c[0]);
 		checkContainment(t[3], c[1]);
 		checkContainment(t[3], c[2]);
+		checkContainment(t[3], c[3]);
 	}
 	
 	private static void checkContainment(Circle c1, Circle c2)
@@ -95,7 +103,7 @@ public class Ese103
 	
 	private static void checkContainment(Triangle t, Circle c)
 	{
-		if(c.contains(t))
+		if(t.contains(c))
 			System.out.println(t + " contiene " + c);
 		else
 			System.out.println(t + " non contiene " + c);

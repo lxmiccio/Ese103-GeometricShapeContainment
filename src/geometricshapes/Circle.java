@@ -6,6 +6,12 @@ public class Circle
 	private double yC;
 	private double r;
 	
+	/**
+	 * Constructor. If radius is equal or less than 0, throws an exception
+	 * @param xC x point of the circle's centre
+	 * @param yC y point of the circle's centre
+	 * @param r radius of the circle
+	 */
 	public Circle(double xC, double yC, double r)
 	{
 		this.xC = xC;
@@ -15,31 +21,52 @@ public class Circle
 		this.r = r;
 	}
 	
+	/**
+	 * @return x point of the circle's centre
+	 */
 	public double getXC()
 	{
 		return xC;
 	}
 
+	/**
+	 * @return y point of the circle's centre
+	 */
 	public double getYC()
 	{
 		return yC;
 	}
 
+	/**
+	 * @return radius of the circle
+	 */
 	public double getR()
 	{
 		return r;
 	}
-
+	
+	/**
+	 * Set the x point of the circle's centre
+	 * @param xC x point of the circle's centre
+	 */
 	public void setXC(double xC) 
 	{
 		this.xC = xC;
 	}
-
+	
+	/**
+	 * Set the x point of the circle's centre
+	 * @param yC y point of the circle's centre
+	 */
 	public void setYC(double yC)
 	{
 		this.yC = yC;
 	}
 
+	/**
+	 * Set the radius of the circle. If radius is equal or less than 0, throws an exception
+	 * @param radius of the cirlce
+	 */
 	public void setR(double r)
 	{
 		if(this.r <= 0)
@@ -47,26 +74,43 @@ public class Circle
 		this.r = r;
 	}
 
+	/**
+	 * @return the minumum x point of the circle's bounding box
+	 */
 	public double getXMin()
 	{
 		return this.xC-this.r;
 	}
 	
+	/**
+	 * @return the maximum x point of the circle's bounding box
+	 */
 	public double getXMax()
 	{
 		return this.xC+this.r;
 	}
 
+	/**
+	 * @return the minumum y point of the circle's bounding box
+	 */
 	public double getYMin()
 	{
 		return this.yC-this.r;
 	}
 	
+	/**
+	 * @return the maximum y point of the circle's bounding box
+	 */
 	public double getYMax()
 	{
 		return this.yC+this.r;
 	}
 	
+	/**
+	 * Checks if this circle contains another circle
+	 * @param c other circle
+	 * @return true if this circle contains the other circle, otherwise returns false
+	 */
 	public boolean contains(Circle c)
 	{
 		boolean contain = false;
@@ -76,6 +120,11 @@ public class Circle
 		return contain;	
 	}
 	
+	/**
+	 * Checks if this circle contains a triangle
+	 * @param t triangle
+	 * @return true if this circle contains the triangle, otherwise returns false
+	 */
 	public boolean contains(Triangle t)
 	{
 		boolean contain = false;
