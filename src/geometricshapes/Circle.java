@@ -69,9 +69,9 @@ public class Circle
 	 */
 	public void setR(double r)
 	{
-		if(this.r <= 0)
+		if(r <= 0)
 			throw new IllegalArgumentException("The radius must be bigger than 0.");
-		this.r = r;
+			this.r = r;
 	}
 
 	/**
@@ -116,20 +116,6 @@ public class Circle
 		boolean contain = false;
 		if(this.getXMin() <= c.getXMin() && this.getYMin() <= c.getYMin())
 			if(this.getXMax() >= c.getXMax() && this.getYMax() >= c.getYMax())
-				contain = true;
-		return contain;	
-	}
-	
-	/**
-	 * Checks if this circle contains a triangle
-	 * @param t triangle
-	 * @return true if this circle contains the triangle, otherwise returns false
-	 */
-	public boolean contains(Triangle t)
-	{
-		boolean contain = false;
-		if(this.getXMin() <= t.getXMin() && this.getYMin() <= t.getYMin())
-			if(this.getXMax() >= t.getXMax() && this.getYMax() >= t.getYMax())
 				contain = true;
 		return contain;	
 	}

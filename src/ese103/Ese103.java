@@ -2,110 +2,77 @@ package ese103;
 
 import geometricshapes.*;
 
-public class Ese103
-{
-	public static void main(String[] args)
-	{
-		Circle c[] = new Circle[4];
-		c[0] = new Circle(2, 4, 6);
-		c[1] = new Circle(3, 2, 4);
-		c[2] = new Circle(4, 4, 6);
-		c[3] = new Circle(5, 5, 1);
-		Triangle t[] = new Triangle[4];
-		t[0] = new Triangle(2, 4, 6);
-		t[1] = new Triangle(3, 2, 4);
-		t[2] = new Triangle(4, 4, 6);
-		t[3] = new Triangle(5, 5, 1);
-		checkContainment(c[0], c[1]);
-		checkContainment(c[0], c[2]);
-		checkContainment(c[0], c[3]);
-		checkContainment(c[1], c[0]);
-		checkContainment(c[1], c[2]);
-		checkContainment(c[1], c[3]);
-		checkContainment(c[2], c[0]);
-		checkContainment(c[2], c[1]);
-		checkContainment(c[2], c[3]);
-		checkContainment(c[3], c[0]);
-		checkContainment(c[3], c[1]);
-		checkContainment(c[3], c[2]);
-		System.out.println();
-		checkContainment(t[0], t[1]);
-		checkContainment(t[0], t[2]);
-		checkContainment(t[0], t[3]);
-		checkContainment(t[1], t[0]);
-		checkContainment(t[1], t[2]);
-		checkContainment(t[1], t[3]);
-		checkContainment(t[2], t[0]);
-		checkContainment(t[2], t[1]);
-		checkContainment(t[2], t[3]);
-		checkContainment(t[3], t[0]);
-		checkContainment(t[3], t[1]);
-		checkContainment(t[3], t[2]);
-		System.out.println();
-		checkContainment(c[0], t[0]);
-		checkContainment(c[0], t[1]);
-		checkContainment(c[0], t[2]);
-		checkContainment(c[0], t[3]);
-		checkContainment(c[1], t[0]);
-		checkContainment(c[1], t[1]);
-		checkContainment(c[1], t[2]);
-		checkContainment(c[1], t[3]);
-		checkContainment(c[2], t[0]);
-		checkContainment(c[2], t[1]);
-		checkContainment(c[2], t[2]);
-		checkContainment(c[2], t[3]);
-		checkContainment(c[3], t[0]);
-		checkContainment(c[3], t[1]);
-		checkContainment(c[3], t[2]);
-		checkContainment(c[3], t[3]);
-		System.out.println();
-		checkContainment(t[0], c[0]);
-		checkContainment(t[0], c[1]);
-		checkContainment(t[0], c[2]);
-		checkContainment(t[0], c[3]);
-		checkContainment(t[1], c[0]);
-		checkContainment(t[1], c[1]);
-		checkContainment(t[1], c[2]);
-		checkContainment(t[1], c[3]);
-		checkContainment(t[2], c[0]);
-		checkContainment(t[2], c[1]);
-		checkContainment(t[2], c[2]);
-		checkContainment(t[2], c[3]);
-		checkContainment(t[3], c[0]);
-		checkContainment(t[3], c[1]);
-		checkContainment(t[3], c[2]);
-		checkContainment(t[3], c[3]);
+public class Ese103 {
+
+	public static void main(String[] args) throws Exception {
+		Circle c = null;
+		
+		// Verifica di Costruttore
+		System.out.print("01: Verifica implementazione costruttore...");
+		try {
+			c = new Circle(0, 0, 0);
+			// Se viene eseguita l'istruzione successiva, non è stata lanciata l'eccezione
+			// per il raggio non positivo. L'implementazione sarebbe errata.
+			throw new Exception("Errore nell'implementazione di Costruttore");
+		}
+		catch(IllegalArgumentException e) {
+			e.getMessage();
+		}
+		
+		// Verifica di Costruttore e Getter
+		System.out.print("02: Verifica implementazione Costruttore e Getter...");
+		c = new Circle(5, 6, 7);
+		if(c.getXC() != 5)
+			throw new Exception("Errore nell'implementazione di getXC o Costruttore");
+		if(c.getYC() != 6)
+			throw new Exception("Errore nell'implementazione di getYC o Costruttore");
+		if(c.getR() != 7)
+			throw new Exception("Errore nell'implementazione di getR o Costruttore");
+		System.out.println("superata");
+		
+		// Verifica di Costruttore e Getter
+		System.out.print("03: Verifica implementazione Setter...");
+		c.setXC(10);
+		c.setYC(11);
+		c.setR(12);
+		if(c.getXC() != 10)
+			throw new Exception("Errore nell'implementazione di setXC");
+		if(c.getYC() != 11)
+			throw new Exception("Errore nell'implementazione di setYC");
+		if(c.getR() != 12)
+			throw new Exception("Errore nell'implementazione di setR");
+		System.out.println("superata");
+		
+		// Verifica di eccezione in setR
+		System.out.print("04: Verifica implementazione setR...");
+		try {
+			c.setR(-1);
+			// Se viene eseguita l'istruzione successiva, non è stata lanciata l'eccezione
+			// per il raggio non positivo. L'implementazione sarebbe errata.
+			throw new Exception("Errore nell'implementazione di setR");
+		}
+		catch(IllegalArgumentException e) {
+			System.out.println("superata");
+		}
+		
+		// Verifica di contains
+		System.out.println("05: Verifica implementazione contains (manuale)...");
+		Circle circleArray[] =  new Circle[3];
+		
+		circleArray[0] = new Circle(0, 0, 1);
+		circleArray[1] = new Circle(0.5, 0.5, 0.5);
+		circleArray[2] = new Circle(1, 1, 1);
+		
+		Circle a, b;
+		
+		for(int i=0; i<circleArray.length; i++) {
+			a = circleArray[i];
+			b = circleArray[(i+1) % circleArray.length];
+			if(a.contains(b))
+				System.out.println(a + " contiene " + b);
+			else
+				System.out.println(a + " NON contiene " + b);
+		}
 	}
-	
-	private static void checkContainment(Circle c1, Circle c2)
-	{
-		if(c1.contains(c2))
-			System.out.println(c1 + " contiene " + c2);
-		else
-			System.out.println(c1 + " non contiene " + c2);
-	}
-	
-	private static void checkContainment(Triangle t1, Triangle t2)
-	{
-		if(t1.contains(t2))
-			System.out.println(t1 + " contiene " + t2);
-		else
-			System.out.println(t1 + " non contiene " + t2);
-	}
-	
-	private static void checkContainment(Circle c, Triangle t)
-	{
-		if(c.contains(t))
-			System.out.println(c + " contiene " + t);
-		else
-			System.out.println(c + " non contiene " + t);
-	}
-	
-	private static void checkContainment(Triangle t, Circle c)
-	{
-		if(t.contains(c))
-			System.out.println(t + " contiene " + c);
-		else
-			System.out.println(t + " non contiene " + c);
-	}
+
 }
