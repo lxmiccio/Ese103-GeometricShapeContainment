@@ -69,9 +69,9 @@ public class Circle
 	 */
 	public void setR(double r)
 	{
-		if(this.r <= 0)
+		if(r <= 0)
 			throw new IllegalArgumentException("The radius must be bigger than 0.");
-		this.r = r;
+			this.r = r;
 	}
 
 	/**

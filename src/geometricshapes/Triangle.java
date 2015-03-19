@@ -71,7 +71,7 @@ public class Triangle
 	 */
 	public void setL(double l)
 	{
-		if(this.l <= 0)
+		if(l <= 0)
 			throw new IllegalArgumentException("The side must be bigger than 0.");
 		this.l = l;
 	}
