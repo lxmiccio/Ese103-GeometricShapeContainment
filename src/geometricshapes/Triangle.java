@@ -42,8 +42,6 @@ public class Triangle
 	 */
 	public double getL()
 	{
-		if(l <= 0)
-			throw new IllegalArgumentException("The side must be bigger than 0.");
 		return l;
 	}
 
