@@ -9,35 +9,47 @@ public class Square extends Rectangle
 
 	public double getL()
 	{
-		return this.xSideLength;
+		return this.getXSideLength();
 	}
 	
 	public void setL(double l)
 	{
 		if(l <= 0)
 			throw new IllegalArgumentException("Side > 0");
-		this.xSideLength = l;
-		this.ySideLength = l;
+		this.setXSideLength(l);
+		this.setYSideLength(l);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see geometricshapes.Rectangle#setXSideLength(double)
+	 */
 	@Override public void setXSideLength(double l)
 	{
 		if(l <= 0)
 			throw new IllegalArgumentException("Side > 0");
-		this.xSideLength = l;
-		this.ySideLength = l;
+		super.setXSideLength(l);
+		super.setYSideLength(l);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see geometricshapes.Rectangle#setYSideLength(double)
+	 */
 	@Override public void setYSideLength(double l)
 	{
 		if(l <= 0)
 			throw new IllegalArgumentException("Side > 0");
-		this.xSideLength = l;
-		this.ySideLength = l;
+		super.setXSideLength(l);
+		super.setYSideLength(l);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see geometricshapes.Rectangle#toString()
+	 */
 	@Override public String toString()
 	{
-		return "Square [xV=" + xV + ", yV=" + yV + ", l=" + xSideLength + "]";
+		return "Square [xV=" + getXV() + ", yV=" + getYV() + ", l=" + getXSideLength() + "]";
 	}
 }
